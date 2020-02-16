@@ -1,22 +1,22 @@
 package gui.model;
 
+import dao.CategoryDAO;
+import dao.RecordDAO;
+import entity.Category;
+import entity.Record;
+import service.DetailService;
+
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailTableModel implements TableModel {
+public class DetailTableModel extends AbstractTableModel {
 
     String[] columNames = new String[]{"分类", "日期", "金额", "备注"};
-    List<String> ds = new ArrayList<>();
-
-    public DetailTableModel() {
-        ds.add("餐饮");
-        ds.add("电子");
-        ds.add("餐饮");
-        ds.add("交通");
-    }
+    DetailService dServer = new DetailService();
+    public List<Record> ds = dServer.list();
 
     @Override
     public int getRowCount() {
@@ -34,22 +34,27 @@ public class DetailTableModel implements TableModel {
     }
 
     @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        return String.class;
-    }
-
-    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        Record r = ds.get(rowIndex);
         if (columnIndex == 0) {
-            return ds.get(rowIndex);
-        } else {
-            return null;
+            return dServer.getCategoryName(r);
         }
+        if (columnIndex == 1) {
+            return r.date;
+        }
+        if (columnIndex == 2) {
+            return r.spend;
+        }
+        if (columnIndex == 3) {
+            return r.comment;
+        }
+
+        return null;
     }
 
     @Override

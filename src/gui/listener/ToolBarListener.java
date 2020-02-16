@@ -4,16 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
  
 import javax.swing.JButton;
- 
-import gui.panel.BackupPanel;
-import gui.panel.CategoryPanel;
-import gui.panel.ConfigPanel;
-import gui.panel.SpendPanel;
-import gui.panel.MainPanel;
-import gui.panel.RecordPanel;
-import gui.panel.RecoverPanel;
-import gui.panel.ReportPanel;
- 
+
+import gui.panel.*;
+
 public class ToolBarListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -21,6 +14,8 @@ public class ToolBarListener implements ActionListener {
         JButton b = (JButton) e.getSource();
         if (b == p.bReport)
             p.workingPanel.show(ReportPanel.instance);
+        if (b == p.bDetail)
+            p.workingPanel.show(DetailPanel.instance);
         if (b == p.bCategory)
             p.workingPanel.show(CategoryPanel.instance);
         if (b == p.bSpend)

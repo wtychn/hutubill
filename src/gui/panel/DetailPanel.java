@@ -1,8 +1,13 @@
 package gui.panel;
 
 import entity.Category;
+import entity.Record;
+import gui.listener.DetailListener;
 import gui.model.CategoryComboBoxModel;
 import gui.model.DetailTableModel;
+import service.CategoryService;
+import service.DetailService;
+import service.RecordService;
 import util.ColorUtil;
 import util.GUIUtil;
 
@@ -19,8 +24,8 @@ public class DetailPanel extends WorkingPanel{
     public JButton bDelete = new JButton("删除");
     public JButton bAll = new JButton("查看全部");
 
-    public DetailTableModel ds = new DetailTableModel();
-    public JTable t = new JTable(ds);
+    public DetailTableModel dtm = new DetailTableModel();
+    public JTable t = new JTable(dtm);
 
     public CategoryComboBoxModel cbModel = new CategoryComboBoxModel();
     public JComboBox<Category> cbCategory = new JComboBox<>(cbModel);
@@ -72,13 +77,39 @@ public class DetailPanel extends WorkingPanel{
         GUIUtil.showPanel(DetailPanel.instance);
     }
 
+    public Category getSelectedCategory(){
+        return (Category) cbCategory.getSelectedItem();
+    }
+
+    public Record getSelectedRecord() {
+        int index = t.getSelectedRow();
+        return dtm.ds.get(index);
+    }
+
     @Override
     public void updateData() {
+        dtm.ds = new DetailService().list();
+        t.updateUI();
+        t.getSelectionModel().setSelectionInterval(0, 0);
 
+        if (dtm.ds.size() == 0) {
+            bEdit.setEnabled(false);
+            bDelete.setEnabled(false);
+        } else {
+            bEdit.setEnabled(true);
+            bDelete.setEnabled(true);
+        }
+
+        cbModel.cs = new CategoryService().list();
+        cbCategory.updateUI();
+        if(0!=cbModel.cs.size())
+            cbCategory.setSelectedIndex(0);
     }
 
     @Override
     public void addListener() {
+        DetailListener listener = new DetailListener();
+        bDelete.addActionListener(listener);
 
     }
 }
