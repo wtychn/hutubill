@@ -28,7 +28,7 @@ public class RecoverPanel extends WorkingPanel {
  
     @Override
     public void updateData() {
-        // TODO Auto-generated method stub
+
          
     }
  

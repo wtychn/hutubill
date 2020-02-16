@@ -19,7 +19,7 @@ public class CategoryService {
             List<Record> rs =recordDao.list(c.id);
             c.recordNumber=rs.size();
         }
-        Collections.sort(cs,(c1,c2)->c2.recordNumber-c1.recordNumber);
+        cs.sort((c1, c2) -> c2.recordNumber - c1.recordNumber);
          
         return cs;
     }

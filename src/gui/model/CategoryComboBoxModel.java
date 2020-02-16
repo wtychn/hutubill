@@ -21,26 +21,21 @@ public class CategoryComboBoxModel implements ComboBoxModel<Category>{
      
     @Override
     public int getSize() {
-        // TODO Auto-generated method stub
-         
         return cs.size();
     }
  
     @Override
     public Category getElementAt(int index) {
-        // TODO Auto-generated method stub
         return cs.get(index);
     }
  
     @Override
     public void addListDataListener(ListDataListener l) {
-        // TODO Auto-generated method stub
-         
+
     }
  
     @Override
     public void removeListDataListener(ListDataListener l) {
-        // TODO Auto-generated method stub
          
     }
  

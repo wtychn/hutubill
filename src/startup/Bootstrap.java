@@ -11,12 +11,9 @@ public class Bootstrap {
     public static void main(String[] args) throws Exception{
         GUIUtil.useLNF();
  
-        SwingUtilities.invokeAndWait(new Runnable() {
-            @Override
-            public void run() {
-                MainFrame.instance.setVisible(true);
-                MainPanel.instance.workingPanel.show(SpendPanel.instance);
-            }
+        SwingUtilities.invokeAndWait(() -> {
+            MainFrame.instance.setVisible(true);
+            MainPanel.instance.workingPanel.show(SpendPanel.instance);
         });
     }
 }

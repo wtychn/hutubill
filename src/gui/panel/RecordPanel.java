@@ -91,7 +91,6 @@ public class RecordPanel extends WorkingPanel {
  
     @Override
     public void addListener() {
-        // TODO Auto-generated method stub
         RecordListener listener = new RecordListener();
         bSubmit.addActionListener(listener);
     }

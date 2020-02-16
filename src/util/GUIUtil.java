@@ -98,7 +98,6 @@ public class GUIUtil {
         try {
             javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

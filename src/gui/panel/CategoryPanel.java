@@ -23,7 +23,6 @@ public class CategoryPanel extends WorkingPanel {
     public JButton bAdd = new JButton("新增");
     public JButton bEdit = new JButton("编辑");
     public JButton bDelete = new JButton("删除");
-    String columNames[] = new String[] { "分类名称", "消费次数" };
  
     public CategoryTableModel ctm = new CategoryTableModel();
     public JTable t = new JTable(ctm);
