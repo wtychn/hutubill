@@ -12,10 +12,13 @@ import java.util.List;
 public class DetailService {
     CategoryDAO categoryDao = new CategoryDAO();
     RecordDAO recordDao = new RecordDAO();
-    DetailPanel dp = DetailPanel.instance;
 
     public List<Record> list() {
         return recordDao.list();
+    }
+
+    public List<Record> list(int cid) {
+        return recordDao.list(cid);
     }
 
     public String getCategoryName(Record r) {

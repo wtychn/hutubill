@@ -18,6 +18,15 @@ public class DetailListener implements ActionListener {
         DetailPanel d = DetailPanel.instance;
         JButton b = (JButton) e.getSource();
 
+        if (b == d.bEdit) {
+
+        }
+        if (b == d.bAll) {
+            d.updataFlag = false;
+        }
+        if (b == d.bFilter) {
+            d.updataFlag = true;
+        }
         if (b == d.bDelete) {
             Record r = d.getSelectedRecord();
 

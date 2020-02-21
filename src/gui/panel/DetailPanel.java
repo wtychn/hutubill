@@ -22,7 +22,10 @@ public class DetailPanel extends WorkingPanel{
 
     public JButton bEdit = new JButton("编辑");
     public JButton bDelete = new JButton("删除");
+    public JButton bFilter = new JButton("筛选");
     public JButton bAll = new JButton("查看全部");
+    public boolean updataFlag = false;
+    public DetailService dServer = new DetailService();
 
     public DetailTableModel dtm = new DetailTableModel();
     public JTable t = new JTable(dtm);
@@ -38,6 +41,8 @@ public class DetailPanel extends WorkingPanel{
         this.setLayout(new BorderLayout());
         this.add(south(), BorderLayout.SOUTH);
         this.add(center(), BorderLayout.CENTER);
+
+        addListener();
     }
 
     private JPanel center() {
@@ -58,9 +63,11 @@ public class DetailPanel extends WorkingPanel{
         pInput.setLayout(new FlowLayout());
         cbCategory.setPreferredSize(new Dimension(100, 20));
         bAll.setPreferredSize(new Dimension(80, 20));
+        bFilter.setPreferredSize(new Dimension(80, 20));
 
         pInput.add(lCategory);
         pInput.add(cbCategory);
+        pInput.add(bFilter);
         pInput.add(bAll);
         return pInput;
     }
@@ -88,7 +95,12 @@ public class DetailPanel extends WorkingPanel{
 
     @Override
     public void updateData() {
-        dtm.ds = new DetailService().list();
+        if (updataFlag) {
+            dtm.ds = dServer.list(getSelectedCategory().id);
+        } else {
+            dtm.ds = dServer.list();
+        }
+
         t.updateUI();
         t.getSelectionModel().setSelectionInterval(0, 0);
 
@@ -109,7 +121,9 @@ public class DetailPanel extends WorkingPanel{
     @Override
     public void addListener() {
         DetailListener listener = new DetailListener();
+        bFilter.addActionListener(listener);
+        bAll.addActionListener(listener);
+        bEdit.addActionListener(listener);
         bDelete.addActionListener(listener);
-
     }
 }
