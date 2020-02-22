@@ -26,6 +26,7 @@ public class DetailListener implements ActionListener {
         if (b == d.bEdit) {
             ep.updateData();
             fEdit.setVisible(true);
+            fEdit.workingPanel.show(EditPanel.instance);
         }
         if (b == d.bAll) {
             d.updataFlag = false;
