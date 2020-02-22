@@ -40,7 +40,7 @@ public class EditPanel extends JPanel{
         GUIUtil.setColor(ColorUtil.blueColor, bDetermine, bCancel);
         JPanel pInput =new JPanel();
         JPanel pSubmit = new JPanel();
-        int gap = 40;
+        int gap = 25;
         pInput.setLayout(new GridLayout(4, 2, gap, gap));
 
         pInput.add(lSpend);
@@ -83,7 +83,7 @@ public class EditPanel extends JPanel{
         tfComment.setText(DetailPanel.instance.getSelectedRecord().comment);
         if(0!=cbModel.cs.size())
             cbCategory.setSelectedIndex(DetailPanel.instance.getSelectedRecord().cid - 1);
-        datepick.setDate(new Date());
+        datepick.setDate(DetailPanel.instance.getSelectedRecord().date);
     }
 
     public void addListener() {
