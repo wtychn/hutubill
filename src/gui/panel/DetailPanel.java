@@ -13,6 +13,8 @@ import util.GUIUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class DetailPanel extends WorkingPanel{
     static {
@@ -100,6 +102,8 @@ public class DetailPanel extends WorkingPanel{
         } else {
             dtm.ds = dServer.list();
         }
+//        按时间顺序排序消费记录
+        dtm.ds.sort((r1, r2) -> r1.date.getTime() <= r2.date.getTime() ? 1 : -1);
 
         t.updateUI();
         t.getSelectionModel().setSelectionInterval(0, 0);
@@ -113,6 +117,7 @@ public class DetailPanel extends WorkingPanel{
         }
 
         cbModel.cs = new CategoryService().list();
+        cbModel.cs.sort(Comparator.comparing(c -> c.id));
         cbCategory.updateUI();
         if(0!=cbModel.cs.size())
             cbCategory.setSelectedIndex(0);

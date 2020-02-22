@@ -2,7 +2,9 @@ package gui.listener;
 
 import entity.Category;
 import entity.Record;
+import gui.frame.EditFrame;
 import gui.panel.DetailPanel;
+import gui.panel.EditPanel;
 import service.CategoryService;
 import service.DetailService;
 import service.RecordService;
@@ -10,6 +12,7 @@ import service.RecordService;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
 
 public class DetailListener implements ActionListener {
 
@@ -17,9 +20,12 @@ public class DetailListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         DetailPanel d = DetailPanel.instance;
         JButton b = (JButton) e.getSource();
+        EditFrame fEdit = EditFrame.instance;
+        EditPanel ep = EditPanel.instance;
 
         if (b == d.bEdit) {
-
+            ep.updateData();
+            fEdit.setVisible(true);
         }
         if (b == d.bAll) {
             d.updataFlag = false;

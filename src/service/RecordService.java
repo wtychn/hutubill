@@ -16,4 +16,14 @@ public class RecordService {
         r.date = date;
         recordDao.add(r);
     }
+
+    public void update(int spend, Category c, String comment, Date date, int id) {
+        Record r = new Record();
+        r.id = id;
+        r.spend = spend;
+        r.cid = c.id;
+        r.comment = comment;
+        r.date = date;
+        recordDao.update(r);
+    }
 }
