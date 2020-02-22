@@ -1,18 +1,14 @@
 package gui.listener;
 
-import entity.Category;
 import entity.Record;
 import gui.frame.EditFrame;
 import gui.panel.DetailPanel;
 import gui.panel.EditPanel;
-import service.CategoryService;
 import service.DetailService;
-import service.RecordService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.InvocationTargetException;
 
 public class DetailListener implements ActionListener {
 

@@ -106,7 +106,6 @@ public class DetailPanel extends WorkingPanel{
         dtm.ds.sort((r1, r2) -> r1.date.getTime() <= r2.date.getTime() ? 1 : -1);
 
         t.updateUI();
-        t.getSelectionModel().setSelectionInterval(0, 0);
 
         if (dtm.ds.size() == 0) {
             bEdit.setEnabled(false);
