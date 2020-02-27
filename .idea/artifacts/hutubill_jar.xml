@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="hutubill:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/hutubill_jar</output-path>
+    <root id="root">
+      <element id="archive" name="hutubill.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="hutubill" />
+      </element>
+      <element id="library" level="module" name="liquidlnf.jar" module-name="hutubill" />
+      <element id="library" level="module" name="mysql-connector-java-5.0.8-bin.jar" module-name="hutubill" />
+      <element id="library" level="module" name="chart.jar" module-name="hutubill" />
+      <element id="library" level="module" name="swingx-core-1.6.2.jar" module-name="hutubill" />
+    </root>
+  </artifact>
+</component>

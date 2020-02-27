@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: startup.Bootstrap
+Class-Path: liquidlnf.jar mysql-connector-java-5.0.8-bin.jar chart.jar s
+ wingx-core-1.6.2.jar
+
